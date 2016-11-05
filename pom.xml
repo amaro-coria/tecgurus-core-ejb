@@ -35,6 +35,20 @@
 			<scope>provided</scope>
 			<version>1.0.2.Final</version>
 		</dependency>
+		<!-- Dependencias entre nuestros proyectos -->
+		<dependency>
+			<groupId>net.tecgurus</groupId>
+			<artifactId>core-persistence</artifactId>
+			<version>${project.parent.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.tecgurus</groupId>
+			<artifactId>core-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
   </dependencies>
   <build>
 		<!-- Specify the artifact name, this is referred to in the EAR's application.xml -->
