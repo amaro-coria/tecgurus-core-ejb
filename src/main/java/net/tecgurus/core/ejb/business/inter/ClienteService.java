@@ -11,4 +11,8 @@ public interface ClienteService {
 
 	List<ClienteDTO> findByName(String name);
 
+	List<ClienteDTO> findAll();
+
+	boolean addCliente(ClienteDTO dto);
+
 }
