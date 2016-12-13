@@ -70,6 +70,27 @@ public class ClienteServiceBean implements ClienteService {
 	}
 	
 	@Override
+	public ClienteDTO findById(Integer id){
+		try {
+			Cliente c = daoCte.find(Cliente.class, id);
+			if(c == null){
+				return null;
+			}
+			ClienteDTO dto = new ClienteDTO();
+			dto.setApeMatCte(c.getApeMatCte());
+			dto.setApePatCte(c.getApePatCte());
+			dto.setDirCte(c.getDirCte());
+			dto.setIdCte(c.getIdCte());
+			dto.setIdEdoCte(c.getIdEdoCte());
+			dto.setNomCte(c.getNomCte());
+			dto.setTelCte(c.getTelCte());
+			return dto;
+		} catch (PersistenceException e) {
+			return null;
+		}
+	}
+	
+	@Override
 	public boolean addCliente(ClienteDTO dto){
 		Cliente c = new Cliente();
 		c.setApeMatCte(dto.getApeMatCte());
@@ -80,6 +101,24 @@ public class ClienteServiceBean implements ClienteService {
 		c.setTelCte(dto.getTelCte());
 		try {
 			daoCte.create(c);
+			return true;
+		} catch (PersistenceException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
+	@Override
+	public boolean editCte(ClienteDTO dto){
+		Cliente c = new Cliente();
+		c.setApeMatCte(dto.getApeMatCte());
+		c.setApePatCte(dto.getApePatCte());
+		c.setDirCte(dto.getDirCte());
+		c.setIdEdoCte(dto.getIdEdoCte());
+		c.setNomCte(dto.getNomCte());
+		c.setTelCte(dto.getTelCte());
+		try {
+			daoCte.update(c);
 			return true;
 		} catch (PersistenceException e) {
 			return false;

@@ -15,4 +15,8 @@ public interface ClienteService {
 
 	boolean addCliente(ClienteDTO dto);
 
+	boolean editCte(ClienteDTO dto);
+
+	ClienteDTO findById(Integer id);
+
 }
